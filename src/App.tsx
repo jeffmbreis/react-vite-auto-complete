@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, memo, useState } from "react";
 import "./App.style.css";
 import { AutoComplete } from "./components/AutoComplete/AutoComplete";
 import { useFetchCountries } from "./hooks/useFetchCountries";
@@ -37,4 +37,4 @@ function App() {
   );
 }
 
-export default App;
+export default memo(App);
