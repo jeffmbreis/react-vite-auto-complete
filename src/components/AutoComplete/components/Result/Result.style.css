@@ -4,6 +4,7 @@
   cursor: pointer;
 }
 
-.Result:hover {
+.Result:hover,
+.Result.Preselected {
   background-color: #cccccc;
 }

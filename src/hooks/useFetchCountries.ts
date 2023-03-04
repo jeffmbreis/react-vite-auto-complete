@@ -4,7 +4,6 @@ interface Country {
   name: {
     common: string;
   };
-  flag: string;
 }
 
 export const useFetchCountries = () => {
@@ -21,19 +20,29 @@ export const useFetchCountries = () => {
       return;
     }
 
-    // Filtering due to api not having a good filter by name and I was getting some unwanted results.
+    // Filtering reasons:
+    // API don't have a good filter by name and I was getting some unwanted results
+    // Avoid result equals to value
     const countries = countriesData
-      .filter(({ name }: Country) =>
-        name.common.toLocaleLowerCase().includes(term.toLocaleLowerCase())
-      )
-      .map(({ name, flag }: Country) => `${name.common} ${flag}`);
+      .filter(({ name }: Country) => {
+        const lowerName = name.common.toLocaleLowerCase();
+        const lowerTerm = term.toLocaleLowerCase();
+
+        return lowerName.includes(lowerTerm) && lowerName !== lowerTerm;
+      })
+      .map(({ name }: Country) => name.common);
 
     // Limiting to 10 results
     setCountries(countries.slice(0, 10));
   };
 
+  const reset = () => {
+    setCountries([]);
+  };
+
   return {
     countries,
     fetchCountries,
+    reset,
   };
 };

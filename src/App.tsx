@@ -5,7 +5,7 @@ import { useFetchCountries } from "./hooks/useFetchCountries";
 
 function App() {
   const [value, setValue] = useState<string>("");
-  const { countries, fetchCountries } = useFetchCountries();
+  const { countries, fetchCountries, reset } = useFetchCountries();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -13,9 +13,26 @@ function App() {
     fetchCountries(value);
   };
 
+  const handleSelect = (value: string) => {
+    setValue(value);
+    reset();
+  };
+
+  const handleBlur = () => {
+    reset();
+  };
+
   return (
     <div id="container">
-      <AutoComplete results={countries} value={value} onChange={handleChange} />
+      <AutoComplete
+        placeholder="Type a Country name"
+        results={countries}
+        value={value}
+        onChange={handleChange}
+        onSelect={handleSelect}
+        onBlur={handleBlur}
+        autoFocus
+      />
     </div>
   );
 }

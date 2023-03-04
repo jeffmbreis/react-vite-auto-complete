@@ -1,3 +1,7 @@
 .AutoComplete {
   position: relative;
 }
+
+.Highlight {
+  font-weight: 800;
+}
