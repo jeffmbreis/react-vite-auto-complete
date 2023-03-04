@@ -1,0 +1,10 @@
+.TextInput {
+  width: 300px;
+  height: 34px;
+  outline: none;
+  padding: 0 10px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+}

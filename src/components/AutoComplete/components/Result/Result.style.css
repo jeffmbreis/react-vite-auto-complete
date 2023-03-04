@@ -1,0 +1,9 @@
+.Result {
+  font-size: 14px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.Result:hover {
+  background-color: #cccccc;
+}
