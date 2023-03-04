@@ -5,3 +5,9 @@
 .Highlight {
   font-weight: 800;
 }
+
+.Loading {
+  position: absolute;
+  right: 0;
+  top: -2px;
+}

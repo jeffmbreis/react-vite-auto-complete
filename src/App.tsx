@@ -5,12 +5,11 @@ import { useFetchCountries } from "./hooks/useFetchCountries";
 
 function App() {
   const [value, setValue] = useState<string>("");
-  const { countries, fetchCountries, reset } = useFetchCountries();
+  const { countries, reset, isLoading } = useFetchCountries(value);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setValue(value);
-    fetchCountries(value);
   };
 
   const handleSelect = (value: string) => {
@@ -32,6 +31,7 @@ function App() {
         onSelect={handleSelect}
         onBlur={handleBlur}
         autoFocus
+        isLoading={isLoading}
       />
     </div>
   );
